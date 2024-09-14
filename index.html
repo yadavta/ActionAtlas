@@ -190,7 +190,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column">
         <h2 class="title is-3">Examples</h2>
-        <div class="tabs is-centered">
+        <div class="tabs is-centered is-toggle">
           <ul>
             <li class="is-active" data-tab="basketball"><a>Basketball</a></li>
             <li data-tab="football"><a>Football</a></li>
@@ -223,6 +223,7 @@
 </section>
 <!--/ Examples Boilerplate -->
 
+<!-- Examples Content & Logic -->
 <script>
   const examples = new Map()
   examples.set("basketball", ["What best describes the move made by the man in a black basketball jersey with the number two?", 1, ["Tip-in", "Putback dunk", "Alley-oop Dunk", "Tomahawk Dunk", "Windmill Dunk"]]);
@@ -265,128 +266,140 @@
       });
   });
 </script>
-<!--/ Examples Logic -->
+<!--/ Examples Content & Logic -->
 
-
-<section class="section has-background-light">
+<!-- Leaderboard -->
+<hr>
+<section class="section has-background-light" style="padding-bottom:1rem;">
   <div class="container is-max-desktop">
-    <div class="columns is-centered">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Leaderboard</h2>
+        <p>For reference, non-expert humans attain 61.62% accuracy, while random chance gets 20.88%.</p>
+        
+        <br>
 
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
+        <h3 class="subtitle is-5">Open-source models</h3>
+        <table class="table is-hoverable has-background-light">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Accuracy (%)</th>
+              <th>Input Frames (#)</th>
+              <th>Input Video Tokens (#)</th>
+              <th>Inference TFLOPs (#)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Qwen2-VL-7B</th>
+              <th>30.24</th>
+              <th>16</th>
+              <th>8 x 576</th>
+              <th>13.38</th>
+            </tr>
+            <tr>
+              <th>CLIP ViT-L-14-336</th>
+              <th>23.71</th>
+              <th>16</th>
+              <th>16 x 576</th>
+              <th>-</th>
+            </tr>
+            <tr>
+              <th>VideoLLaMA</th>
+              <th>22.71</th>
+              <th>16</th>
+              <th>16 x 256</th>
+              <th>6.12</th>
+            </tr>
+            <tr>
+              <th>VideoChat2</th>
+              <th>21.27</th>
+              <th>64</th>
+              <th>64 x 196</th>
+              <th>43.0</th>
+            </tr>
+            <tr>
+              <th>mPLUG-Owl-Video</th>
+              <th>19.49</th>
+              <th>16</th>
+              <th>16 x 256</th>
+              <th>2.94</th>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <!--/ Animation. -->
   </div>
 </section>
 
+<section class="section has-background-light" style="padding-top:0rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-half">
+        <h3 class="subtitle is-5">Proprietary models</h3>
+        <table class="table is-hoverable has-background-light">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Accuracy (%)</th>
+              <th>Input Frames (#)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>GPT-4o</th>
+              <th>42.95</th>
+              <th>16</th>
+            </tr>
+            <tr>
+              <th>Gemini 1.5 Pro</th>
+              <th>35.59</th>
+              <th>all frames*</th>
+            </tr>
+            <tr>
+              <th>GPT-4 Turbo</th>
+              <th>34.25</th>
+              <th>8</th>
+            </tr>
+            <tr>
+              <th>GPT-4o-mini</th>
+              <th>34.25</th>
+              <th>8</th>
+            </tr>
+            <tr>
+              <th>Gemini 1.5 Pro</th>
+              <th>32.37</th>
+              <th>1 fps</th>
+            </tr>
+            <tr>
+              <th>Gemini 1.5 Flash</th>
+              <th>30.49</th>
+              <th>1 fps</th>
+            </tr>
+          </tbody>
+        </table>
+        <p class="is-size-7">*By reformatting clips so that each (original) frame takes up one second apiece, we exploited Gemini's 1 fps sampling to feed it all available frames from a video.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section class="section" id="BibTeX">
+<!--/ Leaderboard -->
+
+
+<section class="section has-background-white" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{salehi2024actionatlas,
   author    = {Salehi, Mohammadreza and Park, Jae Sung and Yadav, Tanush and Kusupati, Aditya and Krishna, Ranjay and Choi, Yejin and Hajishirzi, Hannaneh and Farhadi, Ali},
   title     = {ActionAtlas: A VideoQA Benchmark for Fine-grained Action Recognition},
   journal   = {NeurIPS},
-  year      = {2024},
-}</code></pre>
+  year      = {2024}
+}
+</code></pre>
   </div>
 </section>
-
 
 <footer class="footer">
   <div class="container">
