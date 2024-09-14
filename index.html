@@ -196,7 +196,7 @@
             <li data-tab="football"><a>Football</a></li>
             <li data-tab="cricket"><a>Cricket</a></li>
             <li data-tab="soccer"><a>Soccer</a></li>
-            <li data-tab="bmx"><a>BMX</a></li>
+            <!-- <li data-tab="bmx"><a>BMX</a></li> -->
             <li data-tab="figure"><a>Figure Skating</a></li>
           </ul>
         </div>
@@ -224,13 +224,14 @@
 <!--/ Examples Boilerplate -->
 
 <!-- Examples Content & Logic -->
+<!-- To add BMX example back, put the following line of JavaScript in  -->
+<!--  examples.set("bmx", ["What best describes the move performed by the biker?", 0, ["Tuck no-hander", "Superman", "Barspin", "X-up", "Wheelie"]]) -->
 <script>
   const examples = new Map()
   examples.set("basketball", ["What best describes the move made by the man in a black basketball jersey with the number two?", 1, ["Tip-in", "Putback dunk", "Alley-oop Dunk", "Tomahawk Dunk", "Windmill Dunk"]]);
   examples.set("cricket", ["What best describes the move made by the player in white uniform?", 1, ["Square Cut", "Cover drive", "Cut Shot", "Straight Drive", "Pull Shot"]]);
   examples.set("football", ["What best describes the move made by the person wearing a black jersey with the number 93 on it?", 4, ["Fumble recovery", "Forced fumble", "Pass deflection", "Tackle for loss", "Quarterback sack"]])
   examples.set("soccer", ["What best describes the move made by the player wearing a red jersey with the number 10 on his back?", 3, ["Outside Foot Curl", "Nutmeg", "Heel Flick", "Rabona", "Rainbow Flick"]])
-  examples.set("bmx", ["What best describes the move performed by the biker?", 0, ["Tuck no-hander", "Superman", "Barspin", "X-up", "Wheelie"]])
   examples.set("figure", ["What best describes the move performed by the girl in the video?", 2, ["Double Salchow jump", "Quad jump", "Double flip jump", "Camel spin", "Double axel jump"]])
   let curr_correct = 1
 
