@@ -350,12 +350,12 @@
             <tr>
               <th>GPT-4o</th>
               <th>42.95</th>
-              <th>16</th>
+              <th>16*</th>
             </tr>
             <tr>
               <th>Gemini 1.5 Pro</th>
               <th>35.59</th>
-              <th>all frames*</th>
+              <th>all frames**</th>
             </tr>
             <tr>
               <th>GPT-4 Turbo</th>
@@ -364,8 +364,8 @@
             </tr>
             <tr>
               <th>GPT-4o-mini</th>
-              <th>34.25</th>
-              <th>8</th>
+              <th>33.42</th>
+              <th>4</th>
             </tr>
             <tr>
               <th>Gemini 1.5 Pro</th>
@@ -379,7 +379,9 @@
             </tr>
           </tbody>
         </table>
-        <p class="is-size-7">*By reformatting clips so that each (original) frame takes up one second apiece, we exploited Gemini's 1 fps sampling to feed it all available frames from a video.</p>
+        <p class="is-size-7">*GPT models were tested on 1, 4, 8, 16, and 32 input frames. The best configuration for each model is reported above. See paper for full results.</p>
+        <br>
+        <p class="is-size-7">**By reformatting clips so that each (original) frame takes up one second apiece, we exploited Gemini's 1 fps sampling to feed it all available frames from a video.</p>
       </div>
     </div>
   </div>
